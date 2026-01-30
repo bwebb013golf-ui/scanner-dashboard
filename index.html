@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Multi-Pattern Scanner Dashboard</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #58a6ff;
+    border-bottom: 2px solid #30363d;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #79c0ff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #161b22;
+    border-left: 4px solid #58a6ff;
+}
+
+.section {
+    margin-bottom: 50px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    border: 1px solid #30363d;
+}
+
+.meta {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-top: 4px;
+}
+
+.badge-pattern {
+    background-color: #1f6feb;
+    color: #ffffff;
+}
+
+.badge-stage-breakout {
+    background-color: #3fb950;
+    color: #ffffff;
+}
+
+.badge-stage-near_breakout {
+    background-color: #d29922;
+    color: #0d1117;
+}
+
+.badge-stage-forming {
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+
+.badge-tier-A {
+    background-color: #3fb950;
+    color: #0d1117;
+}
+
+.badge-tier-B {
+    background-color: #d29922;
+    color: #0d1117;
+}
+
+.badge-tier-C {
+    background-color: #f85149;
+    color: #ffffff;
+}
+
+.rank-badge {
+    background-color: #ffd700;
+    color: #000;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+/* Modal Lightbox Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover {
+    color: #58a6ff;
+}
+
+.modal-caption {
+    text-align: center;
+    color: #c9d1d9;
+    padding: 10px 0;
+    font-size: 16px;
+}
+</style>
+
+</head>
+<body>
+<h1>Multi-Pattern Technical Scanner Dashboard</h1>
+<p>Generated: 2026-01-30 17:56:18 | Total Patterns: 17</p>
+<h2>🏆 Top 20 Highest Quality Patterns</h2>
+<div class='section'>
+<div class='grid'>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_rounding_bottom/ALGN.png' alt='ALGN chart' data-caption='ALGN - Rounding Bottom - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#1</span>
+<strong>ALGN</strong> (SPX daily)<br>
+<span class='badge badge-pattern'>Rounding Bottom</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_cup_and_handle/PCAR.png' alt='PCAR chart' data-caption='PCAR - Cup And Handle - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#2</span>
+<strong>PCAR</strong> (SPX daily)<br>
+<span class='badge badge-pattern'>Cup And Handle</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 8 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_weekly_inverse_head_shoulders/PCG.png' alt='PCG chart' data-caption='PCG - Inverse Head Shoulders - forming'>
+<div class='meta'>
+<span class='rank-badge'>#3</span>
+<strong>PCG</strong> (SPX weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-forming'>Forming</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 5 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/PR.png' alt='PR chart' data-caption='PR - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#4</span>
+<strong>PR</strong> (SP400 weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_weekly_inverse_head_shoulders/APA.png' alt='APA chart' data-caption='APA - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#5</span>
+<strong>APA</strong> (SPX weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 58.9/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/MUR.png' alt='MUR chart' data-caption='MUR - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#6</span>
+<strong>MUR</strong> (SP400 weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 51.1/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_inverse_head_shoulders/AVY.png' alt='AVY chart' data-caption='AVY - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#7</span>
+<strong>AVY</strong> (SPX daily)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+ | 1 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_daily_inverse_head_shoulders/CNM.png' alt='CNM chart' data-caption='CNM - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#8</span>
+<strong>CNM</strong> (SP400 daily)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+ | 1 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_daily_rounding_bottom/ONTO.png' alt='ONTO chart' data-caption='ONTO - Rounding Bottom - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#9</span>
+<strong>ONTO</strong> (SP400 daily)<br>
+<span class='badge badge-pattern'>Rounding Bottom</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+ | 9 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_broadening_top/KEX.png' alt='KEX chart' data-caption='KEX - Broadening Top - forming'>
+<div class='meta'>
+<span class='rank-badge'>#10</span>
+<strong>KEX</strong> (SP400 weekly)<br>
+<span class='badge badge-pattern'>Broadening Top</span>
+<span class='badge badge-stage-forming'>Forming</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_cup_and_handle/HWM.png' alt='HWM chart' data-caption='HWM - Cup And Handle - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#11</span>
+<strong>HWM</strong> (SPX daily)<br>
+<span class='badge badge-pattern'>Cup And Handle</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 32.3/100
+ | 8 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/TKR.png' alt='TKR chart' data-caption='TKR - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#12</span>
+<strong>TKR</strong> (SP400 weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 32.1/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/NVST.png' alt='NVST chart' data-caption='NVST - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#13</span>
+<strong>NVST</strong> (SP400 weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 27.3/100
+ | 1 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_rounding_bottom/VRTX.png' alt='VRTX chart' data-caption='VRTX - Rounding Bottom - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#14</span>
+<strong>VRTX</strong> (SPX daily)<br>
+<span class='badge badge-pattern'>Rounding Bottom</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 7 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_cup_and_handle/WMT.png' alt='WMT chart' data-caption='WMT - Cup And Handle - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#15</span>
+<strong>WMT</strong> (SPX daily)<br>
+<span class='badge badge-pattern'>Cup And Handle</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 3 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_weekly_inverse_head_shoulders/EL.png' alt='EL chart' data-caption='EL - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#16</span>
+<strong>EL</strong> (SPX weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/LSCC.png' alt='LSCC chart' data-caption='LSCC - Inverse Head Shoulders - breakout'>
+<div class='meta'>
+<span class='rank-badge'>#17</span>
+<strong>LSCC</strong> (SP400 weekly)<br>
+<span class='badge badge-pattern'>Inverse Head Shoulders</span>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 6 bars ago
+</div>
+</div>
+</div>
+</div>
+<h2>🚀 Recent Breakouts (15 patterns)</h2>
+<div class='section'>
+<h3 style='color: #79c0ff; margin-top: 20px;'>Cup And Handle</h3>
+<div class='grid'>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_cup_and_handle/PCAR.png' alt='PCAR chart' data-caption='PCAR - Cup And Handle - Breakout'>
+<div class='meta'>
+<strong>PCAR</strong> (SPX daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 8 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_cup_and_handle/HWM.png' alt='HWM chart' data-caption='HWM - Cup And Handle - Breakout'>
+<div class='meta'>
+<strong>HWM</strong> (SPX daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 32.3/100
+ | 8 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_cup_and_handle/WMT.png' alt='WMT chart' data-caption='WMT - Cup And Handle - Breakout'>
+<div class='meta'>
+<strong>WMT</strong> (SPX daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 3 bars ago
+</div>
+</div>
+</div>
+<h3 style='color: #79c0ff; margin-top: 20px;'>Inverse Head Shoulders</h3>
+<div class='grid'>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/PR.png' alt='PR chart' data-caption='PR - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>PR</strong> (SP400 weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_weekly_inverse_head_shoulders/APA.png' alt='APA chart' data-caption='APA - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>APA</strong> (SPX weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 58.9/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/MUR.png' alt='MUR chart' data-caption='MUR - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>MUR</strong> (SP400 weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 51.1/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_inverse_head_shoulders/AVY.png' alt='AVY chart' data-caption='AVY - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>AVY</strong> (SPX daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+ | 1 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_daily_inverse_head_shoulders/CNM.png' alt='CNM chart' data-caption='CNM - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>CNM</strong> (SP400 daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+ | 1 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/TKR.png' alt='TKR chart' data-caption='TKR - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>TKR</strong> (SP400 weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 32.1/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/NVST.png' alt='NVST chart' data-caption='NVST - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>NVST</strong> (SP400 weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 27.3/100
+ | 1 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_weekly_inverse_head_shoulders/EL.png' alt='EL chart' data-caption='EL - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>EL</strong> (SPX weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_inverse_head_shoulders/LSCC.png' alt='LSCC chart' data-caption='LSCC - Inverse Head Shoulders - Breakout'>
+<div class='meta'>
+<strong>LSCC</strong> (SP400 weekly)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 6 bars ago
+</div>
+</div>
+</div>
+<h3 style='color: #79c0ff; margin-top: 20px;'>Rounding Bottom</h3>
+<div class='grid'>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_rounding_bottom/ALGN.png' alt='ALGN chart' data-caption='ALGN - Rounding Bottom - Breakout'>
+<div class='meta'>
+<strong>ALGN</strong> (SPX daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 6 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_daily_rounding_bottom/ONTO.png' alt='ONTO chart' data-caption='ONTO - Rounding Bottom - Breakout'>
+<div class='meta'>
+<strong>ONTO</strong> (SP400 daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+ | 9 bars ago
+</div>
+</div>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_daily_rounding_bottom/VRTX.png' alt='VRTX chart' data-caption='VRTX - Rounding Bottom - Breakout'>
+<div class='meta'>
+<strong>VRTX</strong> (SPX daily)<br>
+<span class='badge badge-stage-breakout'>Breakout</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 0.0/100
+ | 7 bars ago
+</div>
+</div>
+</div>
+</div>
+<h2>📈 Forming Patterns (2 patterns)</h2>
+<div class='section'>
+<h3 style='color: #79c0ff; margin-top: 20px;'>Broadening Top</h3>
+<div class='grid'>
+<div class='card' onclick='openModal(this)'>
+<img src='SP400_weekly_broadening_top/KEX.png' alt='KEX chart' data-caption='KEX - Broadening Top - Forming'>
+<div class='meta'>
+<strong>KEX</strong> (SP400 weekly)<br>
+<span class='badge badge-stage-forming'>Forming</span>
+<span class='badge badge-tier-C'>Tier C</span><br>
+Score: 50.0/100
+</div>
+</div>
+</div>
+<h3 style='color: #79c0ff; margin-top: 20px;'>Inverse Head Shoulders</h3>
+<div class='grid'>
+<div class='card' onclick='openModal(this)'>
+<img src='SPX_weekly_inverse_head_shoulders/PCG.png' alt='PCG chart' data-caption='PCG - Inverse Head Shoulders - Forming'>
+<div class='meta'>
+<strong>PCG</strong> (SPX weekly)<br>
+<span class='badge badge-stage-forming'>Forming</span>
+<span class='badge badge-tier-A'>Tier A</span><br>
+Score: 100.0/100
+ | 5 bars ago
+</div>
+</div>
+</div>
+</div>
+
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <div class="modal-caption" id="modalCaption"></div>
+</div>
+
+<script>
+function openModal(card) {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    var captionText = document.getElementById("modalCaption");
+    
+    var img = card.querySelector('img');
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    captionText.innerHTML = img.getAttribute('data-caption');
+    
+    // Prevent event bubbling
+    event.stopPropagation();
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
+</script>
+
+</body>
+</html>
